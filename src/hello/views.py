@@ -3,4 +3,4 @@ from django.http import HttpResponse
 # Create your views here.
 
 def hello(request):
-    return HttpResponse("This is Sankovich -- Osp_Book_Store")
+    return HttpResponse("<h1 align = 'center'>This is Sankovich -- Osp_Book_Store</h1>")
