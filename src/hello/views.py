@@ -2,5 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 
-def hello(request):
-    return HttpResponse("<h1 align = 'center'>This is Sankovich -- Osp_Book_Store</h1>")
+def index1(request):
+    return render(request,"1.html")
+def index2(request):
+    return render(request,"2.html")
+def index3(request):
+    return render(request,"3.html")
+def xxx(request):
+    return render(request,"xxx.html")
