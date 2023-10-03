@@ -59,7 +59,7 @@ class Book(models.Model):
 
     class Meta:
         ordering = ("-publish",)
-        verbose_name = "Книга"
+        verbose_name = "Книгу"
         verbose_name_plural = "Книги"
 
 
@@ -75,7 +75,7 @@ class Writer(models.Model):
 
     class Meta:
         ordering = ("last_name",)
-        verbose_name = "Автор"
+        verbose_name = "Автора"
         verbose_name_plural = "Авторы"
 
 
@@ -87,7 +87,7 @@ class Serie(models.Model):
 
     class Meta:
         ordering = ("name",)
-        verbose_name = "Серия"
+        verbose_name = "Серию"
         verbose_name_plural = "Серии"
 
 
