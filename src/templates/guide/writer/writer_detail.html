@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+ {% load static %}
+ {%block title%}Osp_Book_Store{%endblock %}
+ {% block content %}
+<div class="container text-center">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
+<hr>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-3">
+      <h1>{{object.name}}</h1>
+    </div>
+    <div class="col-6">{{ object.discription}}</div>
+  </div>
+  <div class="col-3">
+  </div>
+  <div class="row">
+    <div class="col">
+      <a class="btn btn-outline-success my-2 my-sm-0 float-end" role="button" href="/guide/writer/update/{{ object.pk}}">Обновить</a>
+      <a class="btn btn-outline-success my-2 my-sm-0 float-end" role="button" href="/guide/writer/delete/{{ object.pk}}">Удалить</a>
+      </div>
+  </div>
+</div>
+{% endblock %}
+<!-- Кнопка-триггер модального окна -->
+
+
+<!-- Модальное окно -->

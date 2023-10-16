@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+{%block title%}Osp_Book_Store{%endblock %}
+{% block content %}
+<div class="container text-center">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <img src="{{object.cover_foto.url}}" alt="" height =250, weight =250>
+    </div>
+    <div class="col-8">
+      <table class="table table-hover">
+        <tr>
+          <th>"Название книги":</th>
+          <td>{{object.title_of_the_book}}</td>
+        </tr>
+        <tr>
+          <th>"Цена(BYN)"</th>
+          <td>{{object.price}}</td>
+        </tr>
+        <tr>
+          <th>"Автор":</th>
+          <td>{% for obj in object.writer.all%}
+            {{obj.name}} <br>
+            {%endfor%}</td>
+        </tr>
+        <tr>
+          <th>"Серия":</th>
+          <td>{{object.serie.name}}</td>
+        </tr>
+        <tr>
+          <th>"Жанр":</th>
+          <td>{% for obj in object.genre.all%}
+            {{obj.name}} <br>
+            {%endfor%}</td>
+        </tr>
+        <tr>
+          <th>"Год издания":</th>
+          <td>{{object.year_of_publication}}</td>
+        </tr>
+        <tr>
+          <th>"Количество страниц":</th>
+          <td>{{object.page}}</td>
+        </tr>
+        <tr>
+          <th>"Переплёт":</th>
+          <td>{{object.binding}}</td>
+        </tr>
+        <tr>
+          <th>"Формат":</th>
+          <td>{{object.format}}</td>
+        </tr>
+        <tr>
+          <th>"ISBN":</th>
+          <td>{{object.isbn}}</td>
+        </tr>
+        <tr>
+          <th>"Вес(гр)":</th>
+          <td>{{object.weight}}</td>
+        </tr>
+        <tr>
+          <th>"Возрастные ограничения": </th>
+          <td>{{object.age}}</td>
+        </tr>
+        <tr>
+          <th>"Издательство":</th>
+          <td>{{object.publishing_house.name}}</td>
+        </tr>
+        <tr>
+          <th>"Количество книг в наличии":</th>
+          <td>{{object.availability}}</td>
+        </tr>
+        <tr>
+          <th>"Доступен для заказа":</th>
+          <td>{{object.active}}</td>
+        </tr>
+        <tr>
+          <th>"Рейтинг(1-10)":</th>
+          <td>{{object.rating}}</td>
+        </tr>
+        <tr>
+          <th>"Дата создания":</th>
+          <td>{{object.created}} </td>
+        </tr>
+        <tr>
+          <th>"Дата изменения":</th>
+          <td>{{object.updated}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="container text-center">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-success my-2 my-sm-0 float-end">Если уверен, то ЖМИ</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

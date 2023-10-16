@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{%block title %}Osp_Book_Store{% endblock %}
+
+{% block content %}
+<div class="container">
+    <table class="table caption-top">
+        <caption>Каталог книг</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Фото обложки</th>
+            <th scope="col">Название книги</th>
+            <th scope="col"></th>
+            <th scope="col">Рейтинг</th>
+            <th scope="col">Цена</th>
+            <th scope="col">Доступен</th>
+          </tr>
+        </thead>
+        <tbody>
+           {% for obj in object.books.all%}
+              <tr>
+                <th scope="row">:)</th>
+                <td><img src="{{obj.cover_foto.url}}" alt="" height =100, weight =50></td>
+                <td><p><a class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"  href="/catalog/book/{{ obj.pk}}"> {{obj.title_of_the_book}}
+                  </a></p>
+                </td>
+                <td></td>
+                <td>{{obj.rating}}</td>
+                <td>{{obj.price}}</td>
+                <td>{{obj.active}}</td>
+              </tr>
+           {%endfor%}
+        </tbody>
+
+      </table>
+      <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="/catalog/book/create">Добавить новую книгу</a>
+</div>
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo В начало</a>
+            <a href="?page={{ page_obj.previous_page_number }}">назад</a>
+        {% endif %}
+        <span class="current">
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+        </span>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">след.</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">пред. &raquo</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
