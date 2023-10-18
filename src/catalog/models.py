@@ -9,7 +9,7 @@ ACTIVE_CHOICES = (("Да", "ДА"), ("Нет", "НЕТ"))
 
 # Create your models here.
 class Book(models.Model):
-    title_of_the_book = models.CharField(_("Название книги"), max_length=50)
+    title_of_the_book = models.CharField(_("Название книги"), max_length=100)
     cover_foto = models.ImageField(
         verbose_name="Фото обложки", upload_to="book_images/%Y/%m/%d"
     )
@@ -25,8 +25,8 @@ class Book(models.Model):
     )
     year_of_publication = models.IntegerField(_("Год издания"))
     page = models.IntegerField(_("Количество страниц"))
-    binding = models.CharField(_("Переплёт"), max_length=50)
-    format = models.CharField(_("Формат"), max_length=50)
+    binding = models.CharField(_("Переплёт"), max_length=100)
+    format = models.CharField(_("Формат"), max_length=100)
     isbn = models.PositiveBigIntegerField(
         _("ISBN"),
         validators=[

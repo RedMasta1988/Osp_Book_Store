@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 # Create your models here.
 class Writer(models.Model):
     name = models.CharField(_("Автор"), max_length=100)
-    discription = models.TextField(_("Описание"), max_length=300, blank=True, null=True)
+    discription = models.TextField(_("Описание"), max_length=3000, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -18,8 +18,8 @@ class Writer(models.Model):
 
 
 class Serie(models.Model):
-    name = models.CharField(_("Серия"), max_length=50)
-    discription = models.TextField(_("Описание"), max_length=300, blank=True, null=True)
+    name = models.CharField(_("Серия"), max_length=100)
+    discription = models.TextField(_("Описание"), max_length=3000, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -31,8 +31,8 @@ class Serie(models.Model):
 
 
 class Genre(models.Model):
-    name = models.CharField(_("Жанр"), max_length=50)
-    discription = models.TextField(_("Описание"), max_length=300, blank=True, null=True)
+    name = models.CharField(_("Жанр"), max_length=100)
+    discription = models.TextField(_("Описание"), max_length=3000, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -44,8 +44,8 @@ class Genre(models.Model):
 
 
 class PublishingHouse(models.Model):
-    name = models.CharField(_("Издательство"), max_length=50)
-    discription = models.TextField(_("Описание"), max_length=300, blank=True, null=True)
+    name = models.CharField(_("Издательство"), max_length=100)
+    discription = models.TextField(_("Описание"), max_length=3000, blank=True, null=True)
 
     def __str__(self):
         return self.name
