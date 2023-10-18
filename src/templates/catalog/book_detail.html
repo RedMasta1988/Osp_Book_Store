@@ -102,10 +102,12 @@
 <div class="container text-center">
   <div class="row">
     <div class="col">
+      {% if user.is_authenticated %}
       <a class="btn btn-outline-success my-2 my-sm-0 float-end" role="button"
         href="/catalog/book/update/{{ object.pk}}/">Обновить</a>
       <a class="btn btn-outline-success my-2 my-sm-0 float-end" role="button"
         href="/catalog/book/delete/{{ object.pk}}/">Удалить</a>
+        {% endif %}
       <a class="btn btn-outline-success my-2 my-sm-0 float-end" role="button" href="#">ДОБАВИТЬ В КОРЗИНУ</a>
     </div>
   </div>

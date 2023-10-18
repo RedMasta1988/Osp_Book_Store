@@ -19,12 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from catalog import views
+from cart import views as cart_views
+
+
 urlpatterns = [
     path("catalog/", include("catalog.urls")),
     path('account/', include('account.urls')),
     path("guide/", include("guide.urls")),
+    path("search/", views.search, name='q'),
+    path('cart/', cart_views.view_cart),
     path('', views.view_home),
-    
     path("admin/", admin.site.urls),
     
 ]+ static(

@@ -56,7 +56,7 @@ class Book(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Book({self.pk}): {self.title_of_the_book}"
+        return f"Книга({self.pk}): {self.title_of_the_book}"
 
     class Meta:
         ordering = ("-publish",)

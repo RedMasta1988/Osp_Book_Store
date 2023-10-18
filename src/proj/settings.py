@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "catalog",
     "cart",
-    "orders",
     "guide",
     "account",
 ]
@@ -58,11 +57,14 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "proj.urls"
-
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
+TEMPLATE_DIRS = (
+    os.path.join(SETTINGS_PATH, 'templates'),
+)
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR, "templates"],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

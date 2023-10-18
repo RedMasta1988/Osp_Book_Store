@@ -19,9 +19,11 @@
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form|crispy }}
+            {% if user.is_authenticated %}
             <button type="submit" class="btn btn-outline-success my-2 my-sm-0 float-end">
                 Обновить
               </button>
+              {% endif %}
         </form>
     </div>
     <div class="col-3"></div>

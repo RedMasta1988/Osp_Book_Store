@@ -2,100 +2,154 @@
 {% load static %}
 {%block title %}Osp_Book_Store{% endblock %}
 {% block content %}
-<div class="container text-center">
+
+<div class="container text-center ">
   <div class="row align-items-center">
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
+    <div class="col-2">
+      <img class="mb-4" src={% static "logo.png" %} alt="" width="150" height="150">
     </div>
-    <div class="col">
-     </div>
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
+    <div class="col auto">
+      <div style="width: 100%; height: 200px;">
+        <p class="text-warning bg-dark fs-5">«Osp_Book_Store» является крупной торговой сетью в РБ. В фирменном книжном магазине сети предлагается большой выбор разнообразной литературы и периодических изданий:
+художественная литература в различных жанрах;
+детская литература;
+учебная литература, методические пособия;
+научно-популярные издания;
+литература о хобби, творчестве;
+коллекционные издания и др.</p>
+      </div>
     </div>
-    <div class="col">
+    <div class="col-2">
+      <img class="mb-4" src={% static "logo.png" %} alt="" width="150" height="150">
     </div>
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="4000">
+            <img src="{% static "bootstrap.jpg" %}" class="d-block w-100" alt="..." height="200">
+          </div>
+          <div class="carousel-item" data-bs-interval="4000">
+            <img src="{% static "html_css.png" %}" class="d-block w-100" alt="..." height="200">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="4000">
+            <img src="{% static "it.png" %}" class="d-block w-100" alt="..." height="200">
+          </div>
+          <div class="carousel-item" data-bs-interval="4000">
+            <img src="{% static "python_django.webp" %}" class="d-block w-100" alt="..." height="200">
+          </div>
+        </div>
+        </div>
+   </div>
+</div>
+<div class="container text-center">
+  <div class=row>
+    <div class=col> 
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class=row>
+    <div class=col> 
+      <h3>САМЫЕ ПОПУЛЯРНЫЕ</h3>  
     </div>
   </div>
 </div>
 <div class="container text-center">
-  <div class="row align-items-center">
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    {% for obj in object_list %}
+    {% if obj.rating == 10%}
     <div class="col">
+      <div class="p-3"><div class="card">
+        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+          <h5 class="card-title">{{obj.title_of_the_book}}</h5>
+          {% for obj in obj.writer.all%}
+          <p class="card-text">Автор:{{obj.name}}</p>
+          {%endfor%}
+          <p class="card-text">Стоимость:{{obj.price}}</p>
+          <a href="#" class="btn btn-primary">В корзину</a>
+        </div>
+      </div></div> 
     </div>
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
-    </div>
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
-    </div>
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
-    </div>
-    <div class="col">
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<div class="container">
+  <div class=row>
+    <div class=col> 
+      <h3>НОВЫЕ ПОСТУПЛЕНИЯ</h3>
     </div>
   </div>
 </div>
 <div class="container text-center">
-  <div class="row align-items-center">
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    {% for obj in zz_list %}
     <div class="col">
+      <div class="p-3"><div class="card">
+        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+          <h5 class="card-title">{{obj.title_of_the_book}}</h5>
+          <p class="card-text">Стоимость:{{obj.price}}</p>
+          <a href="#" class="btn btn-primary">В корзину</a>
+        </div>
+      </div></div> 
     </div>
-    <div class="col">
-    </div>
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
-    </div>
-    <div class="col">
-    </div>
-    <div class="col">
-    </div>
+    {% endfor %}
   </div>
 </div>
 <div class="container text-center">
   <div class="row align-items-center">
-    <div class="col">
+    <div class="col-2">
+      <div class="card border-success mb-3" style="max-width: 20rem;">
+        <div class="card-header bg-transparent border-success">Информация</div>
+        <div class="card-body text-success">
+          <ul>
+            <li class="fs-8"><a href="#" data-bs-toggle="modal" data-bs-target="#delivery">О доставке</a></li>
+            <li class="fs-6"><a href="#" data-bs-toggle="modal" data-bs-target="#rights">Права потребителя</a></li>
+            <li class="fs-6"><a href="#" data-bs-toggle="modal" data-bs-target="#refund">Возврат товара</a></li>
+        </ul>
+        </div>
+      </div>
     </div>
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
-    </div>
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
-    </div>
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
-    </div>
-    <div class="col">
-    </div>
-  </div>
-</div>
-<div class="container text-center">
-  <div class="row align-items-center">
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
-    </div>
-    <div class="col">
-    </div>
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
-    </div>
-    <div class="col">
-    </div>
-    <div class="col">
-      Здесь могла быть<br>
-      Ваша реклама
+    <div class="col-8">
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+            <img src="{% static "slide2.jpg" %}" class="d-block w-100" alt="..." height="200">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="{% static "slide3.webp" %}" class="d-block w-100" alt="..." height="200">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="{% static "slide4.png" %}" class="d-block w-100" alt="..." height="200">
+          </div>
+        </div>
     </div>
   </div>
+    <div class="col-2">
+      <div class="card border-success mb-6" style="max-width: 20rem;">
+        <div class="card-header bg-transparent border-success">Информация</div>
+        <div class="card-header bg-transparent border-success">
+        <div class="fb-like" data-share="true" data-width="300" data-show-faces="true">&nbsp;</div>
+        <div class="banner-title">Бесплатный самовывоз</div>
+        <div class="banner-content">Почтой бесплатно</div>
+        <div class="banner-content">от 100 руб.</div>
+        <div class="fb-like" data-share="true" data-width="300" data-show-faces="true">&nbsp;</div>
+        </div>
+    </div>
+  </div>
+  <!-- Модальное окно -->
+  {% include "info.html" %}
 </div>
 {% endblock %}

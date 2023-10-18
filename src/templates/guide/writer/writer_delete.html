@@ -21,7 +21,9 @@
     <div class="col">
       <form action="" method="post">
         {% csrf_token %}
+        {% if user.is_authenticated %}
         <button type="submit" class="btn btn-outline-success my-2 my-sm-0 float-end">Если уверен, то ЖМИ</button>
+        {% endif %}
       </form>
     </div> 
   </div>

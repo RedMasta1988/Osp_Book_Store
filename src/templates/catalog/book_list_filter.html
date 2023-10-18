@@ -32,9 +32,10 @@
               </tr>
            {%endfor%}
         </tbody>
-
       </table>
+      {% if user.is_authenticated %}
       <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="/catalog/book/create">Добавить новую книгу</a>
+      {% endif %}
 </div>
 </div>
 <div class="pagination">

@@ -3,13 +3,18 @@
 {%block title %}Osp_Book_Store{% endblock %}
 
 {% block content %}
+<div class="container text-center">
+  <div class=row>
+    <div class=col> 
+    </div>
+  </div>
+</div>
 <div class="container">
     <table class="table caption-top">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Жанры</th>
-
           </tr>
         </thead>
         <tbody>
@@ -45,7 +50,9 @@
         {% endfor %}
         </tbody>
       </table>
+      {% if user.is_authenticated %}
       <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="/guide/genre/create">Добавить новый жанр</a>
+      {% endif %}
 </div>
 </div>
 <div class="pagination">
@@ -61,6 +68,8 @@
             <a href="?page={{ page_obj.next_page_number }}">след.</a>
             <a href="?page={{ page_obj.paginator.num_pages }}">пред. &raquo</a>
         {% endif %}
-    </span>
+    </span> 
 </div>
 {% endblock %}
+
+

@@ -3,6 +3,12 @@
 {%block title %}Osp_Book_Store{% endblock %}
 
 {% block content %}
+<div class="container text-center">
+  <div class=row>
+    <div class=col> 
+    </div>
+  </div>
+</div>
 <div class="container">
     <table class="table caption-top">
         <thead>
@@ -45,7 +51,9 @@
         {% endfor %}
         </tbody>
       </table>
+      {% if user.is_authenticated %}
       <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="/guide/publishing_house/create">Добавить новое издательство</a>
+      {% endif %}
 </div>
 </div>
 <div class="pagination">
