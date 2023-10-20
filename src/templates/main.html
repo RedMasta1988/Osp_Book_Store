@@ -1,6 +1,8 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
 {% load static %}
-{%block title %}Osp_Book_Store{% endblock %}
+{% block title %}Osp_Book_Store{% endblock %}
 {% block content %}
 
 <div class="container text-center ">
@@ -51,53 +53,20 @@
         </div>
    </div>
 </div>
-<div class="container text-center">
-  <div class=row>
+<hr>
+<div class="container px-4">
+  <div class=row gx-5>
     <div class=col> 
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class=row>
-    <div class=col> 
-      <h3>САМЫЕ ПОПУЛЯРНЫЕ</h3>  
+      <div class="p-3" ><h3>НОВИНКИ 2023 :</h3> </div>
     </div>
   </div>
 </div>
 <div class="container text-center">
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    {% for obj in object_list %}
-    {% if obj.rating == 10%}
+    {% for obj in new_list %}
     <div class="col">
       <div class="p-3"><div class="card">
-        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="...">
-          <div class="card-body">
-          <h5 class="card-title">{{obj.title_of_the_book}}</h5>
-          {% for obj in obj.writer.all%}
-          <p class="card-text">Автор:{{obj.name}}</p>
-          {%endfor%}
-          <p class="card-text">Стоимость:{{obj.price}}</p>
-          <a href="#" class="btn btn-primary">В корзину</a>
-        </div>
-      </div></div> 
-    </div>
-    {% endif %}
-    {% endfor %}
-  </div>
-</div>
-<div class="container">
-  <div class=row>
-    <div class=col> 
-      <h3>НОВЫЕ ПОСТУПЛЕНИЯ</h3>
-    </div>
-  </div>
-</div>
-<div class="container text-center">
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    {% for obj in zz_list %}
-    <div class="col">
-      <div class="p-3"><div class="card">
-        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="...">
+        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." width="200" height="200">
           <div class="card-body">
           <h5 class="card-title">{{obj.title_of_the_book}}</h5>
           <p class="card-text">Стоимость:{{obj.price}}</p>
@@ -108,6 +77,83 @@
     {% endfor %}
   </div>
 </div>
+<hr>
+<div class="container px-4">
+  <div class=row gx-5>
+    <div class=col> 
+      <div class="p-3" ><h3>С ВЫСОКИМ РЭЙТИНГОМ :</h3> </div>
+    </div>
+  </div>
+</div>
+<div class="container text-center">
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    {% for obj in rating_list %}
+    <div class="col">
+      <div class="p-3"><div class="card">
+        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." width="200" height="200">
+          <div class="card-body">
+          <h5 class="card-title">{{obj.title_of_the_book}}</h5>
+          <p class="card-text">Стоимость:{{obj.price}}</p>
+          <a href="#" class="btn btn-primary">В корзину</a>
+        </div>
+      </div></div> 
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<hr>
+<div class="container px-4">
+  <div class=row gx-5>
+    <div class=col> 
+      <div class="p-3" ><h3>НОВЫЕ ПОСТУПЛЕНИЯ :</h3></div>
+    </div>
+  </div>
+</div>
+<div class="container text-center">
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    {% for obj in last_list %}
+    <div class="col">
+      <div class="p-3"><div class="card">
+        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." width="200" height="200">
+          <div class="card-body">
+          <h5 class="card-title">{{obj.title_of_the_book}}</h5>
+          <p class="card-text">Стоимость:{{obj.price}}</p>
+          <a href="#" class="btn btn-primary">В корзину</a>
+        </div>
+      </div></div> 
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<hr>
+<div class="container text-center ">
+  <div class=row gx-5>
+    <div class=col> 
+      <div class="p-3" ><h3>Уважаемый Покупатель, здесь Вы можете оставить отзыв на хорошую работу магазина или указать на недостатки и помочь нам стать лучше.</h3>
+        <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="/comment">Добавить отзыв</a>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="container">
+  <div class="row">
+        {% for obj in comment_list %}
+        <div class="col-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Автор:</label>
+          <h2>{{obj.name}}</h2>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Отзыв:</label>
+          <p>{{obj.comment}}</p>
+        </div>
+      </div>
+        {% endfor %}
+        
+    </div>
+</div>
+<hr>
 <div class="container text-center">
   <div class="row align-items-center">
     <div class="col-2">
@@ -149,7 +195,9 @@
         </div>
     </div>
   </div>
+
   <!-- Модальное окно -->
   {% include "info.html" %}
 </div>
 {% endblock %}
+<img src="{% static "bootstrap.jpg" %}" class="d-block w-100" alt="..." height="200">

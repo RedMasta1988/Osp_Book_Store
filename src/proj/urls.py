@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from catalog import views
 from cart import views as cart_views
+from comment import views as com_views
 
 
 urlpatterns = [
@@ -28,6 +29,7 @@ urlpatterns = [
     path("guide/", include("guide.urls")),
     path("search/", views.search, name='q'),
     path('cart/', cart_views.view_cart),
+    path('comment/', com_views.CommentCreate.as_view()),
     path('', views.view_home),
     path("admin/", admin.site.urls),
     
