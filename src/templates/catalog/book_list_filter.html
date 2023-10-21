@@ -21,7 +21,7 @@
            {% for obj in object.books.all%}
               <tr>
                 <th scope="row">:)</th>
-                <td><img src="{{obj.cover_foto.url}}" alt="" height =100, weight =50></td>
+                <td><img src="{{obj.cover_foto.url}}" alt="" height =150, weight =100></td>
                 <td><p><a class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"  href="/catalog/book/{{ obj.pk}}"> {{obj.title_of_the_book}}
                   </a></p>
                 </td>

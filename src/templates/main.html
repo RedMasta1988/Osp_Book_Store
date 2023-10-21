@@ -11,7 +11,6 @@
       <img class="mb-4" src={% static "logo.png" %} alt="" width="150" height="150">
     </div>
     <div class="col auto">
-      <div style="width: 100%; height: 200px;">
         <p class="text-warning bg-dark fs-5">«Osp_Book_Store» является крупной торговой сетью в РБ. В фирменном книжном магазине сети предлагается большой выбор разнообразной литературы и периодических изданий:
 художественная литература в различных жанрах;
 детская литература;
@@ -19,12 +18,15 @@
 научно-популярные издания;
 литература о хобби, творчестве;
 коллекционные издания и др.</p>
-      </div>
     </div>
     <div class="col-2">
       <img class="mb-4" src={% static "logo.png" %} alt="" width="150" height="150">
     </div>
   </div>
+</div>
+<div class="container">
+<marquee behavior="alternate" direction="left" >
+  <h1>Очень рад вас видеть на своем сайте!</h1></marquee>
 </div>
 <div class="container">
   <div class="row">
@@ -57,7 +59,8 @@
 <div class="container px-4">
   <div class=row gx-5>
     <div class=col> 
-      <div class="p-3" ><h3>НОВИНКИ 2023 :</h3> </div>
+      <div class="p-3" >
+        <h3>НОВИНКИ 2023 :</h3> </div>
     </div>
   </div>
 </div>
@@ -66,7 +69,7 @@
     {% for obj in new_list %}
     <div class="col">
       <div class="p-3"><div class="card">
-        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." width="200" height="200">
+        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." width="200" height="250">
           <div class="card-body">
           <h5 class="card-title">{{obj.title_of_the_book}}</h5>
           <p class="card-text">Стоимость:{{obj.price}}</p>
@@ -90,7 +93,7 @@
     {% for obj in rating_list %}
     <div class="col">
       <div class="p-3"><div class="card">
-        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." width="200" height="200">
+        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." width="200" height="250">
           <div class="card-body">
           <h5 class="card-title">{{obj.title_of_the_book}}</h5>
           <p class="card-text">Стоимость:{{obj.price}}</p>
@@ -114,7 +117,7 @@
     {% for obj in last_list %}
     <div class="col">
       <div class="p-3"><div class="card">
-        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." width="200" height="200">
+        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." width="200" height="250">
           <div class="card-body">
           <h5 class="card-title">{{obj.title_of_the_book}}</h5>
           <p class="card-text">Стоимость:{{obj.price}}</p>
