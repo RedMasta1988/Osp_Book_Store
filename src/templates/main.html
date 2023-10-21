@@ -64,20 +64,30 @@
     </div>
   </div>
 </div>
-<div class="container text-center">
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+<div class="align-self-stretch">
+  <div class=row>
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
     {% for obj in new_list %}
-    <div class="col d-flex align-items-stretch">
-      <div class="card">
+      <div class="col d-flex align-items-stretch">
+        <div class="card">
         <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." height="350">
           <div class="card-body">
           <h5 class="card-title">{{obj.title_of_the_book}}</h5>
           <p class="card-text">Стоимость:{{obj.price}}</p>
-          <a href="#" class="btn btn-primary d-flex align-items-end">В корзину</a>
+          </div>
+        </div> 
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+      {% for obj in new_list %}
+      <div class="col d-flex align-items-stretch">
+        <div class="card-body">
+        <a href="#" class="btn btn-primary d-flex align-items-end">В корзину</a>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </div>
 <hr>
@@ -88,45 +98,65 @@
     </div>
   </div>
 </div>
-<div class="container text-center">
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+<div class="align-self-stretch">
+  <div class=row>
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
     {% for obj in rating_list %}
-    <div class="col d-flex align-items-stretch">
-      <div class="card">
-        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..."  height="350">
+      <div class="col d-flex align-items-stretch">
+        <div class="card">
+        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." height="350">
           <div class="card-body">
           <h5 class="card-title">{{obj.title_of_the_book}}</h5>
           <p class="card-text">Стоимость:{{obj.price}}</p>
-          <a href="#" class="btn btn-primary d-flex align-items-end">В корзину</a>
+          </div>
+        </div> 
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+      {% for obj in rating_list %}
+      <div class="col d-flex align-items-stretch">
+        <div class="card-body">
+        <a href="#" class="btn btn-primary d-flex align-items-end">В корзину</a>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </div>
 <hr>
 <div class="container px-4">
   <div class=row gx-5>
     <div class=col> 
-      <div class="p-3" ><h3>НОВЫЕ ПОСТУПЛЕНИЯ :</h3></div>
+      <div class="p-4" ><h3>НОВЫЕ ПОСТУПЛЕНИЯ :</h3></div>
     </div>
   </div>
 </div>
 
 <div class="align-self-stretch">
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+  <div class=row>
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
     {% for obj in last_list %}
-    <div class="col d-flex align-items-stretch">
+      <div class="col d-flex align-items-stretch">
         <div class="card">
         <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." height="350">
           <div class="card-body">
           <h5 class="card-title">{{obj.title_of_the_book}}</h5>
           <p class="card-text">Стоимость:{{obj.price}}</p>
-          <a href="#" class="btn btn-primary d-flex align-items-end">В корзину</a>
-        </div>
-      </div> 
+          </div>
+        </div> 
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+      {% for obj in last_list %}
+      <div class="col d-flex align-items-stretch">
+        <div class="card-body">
+        <a href="#" class="btn btn-primary d-flex align-items-end">В корзину</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 <hr>
