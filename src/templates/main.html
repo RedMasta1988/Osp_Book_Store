@@ -69,8 +69,8 @@
     {% for obj in new_list %}
     <div class="col d-flex align-items-stretch">
       <div class="card">
-        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." width="200" height="250">
-          <div class="card-body" height="350">
+        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." height="350">
+          <div class="card-body">
           <h5 class="card-title">{{obj.title_of_the_book}}</h5>
           <p class="card-text">Стоимость:{{obj.price}}</p>
           <a href="#" class="btn btn-primary d-flex align-items-end">В корзину</a>
@@ -93,7 +93,7 @@
     {% for obj in rating_list %}
     <div class="col d-flex align-items-stretch">
       <div class="card">
-        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." width="200" height="250">
+        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..."  height="350">
           <div class="card-body">
           <h5 class="card-title">{{obj.title_of_the_book}}</h5>
           <p class="card-text">Стоимость:{{obj.price}}</p>
@@ -117,8 +117,8 @@
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
     {% for obj in last_list %}
     <div class="col d-flex align-items-stretch">
-        <div class="card" style="width: 18rem;">
-        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." height="250">
+        <div class="card">
+        <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." height="350">
           <div class="card-body">
           <h5 class="card-title">{{obj.title_of_the_book}}</h5>
           <p class="card-text">Стоимость:{{obj.price}}</p>
