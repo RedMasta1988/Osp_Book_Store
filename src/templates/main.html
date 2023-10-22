@@ -24,9 +24,14 @@
     </div>
   </div>
 </div>
+
 <div class="container">
 <marquee behavior="alternate" direction="left" >
-  <h1>#Очень рад Вас видеть на своем сайте!#</h1></marquee>
+  <h1>#Очень рад Вас видеть /{{ request.user }}/ на своем сайте!# <br>
+    {% if user.is_authenticated %}
+  Спасибо, что зарегистрировались:)</h1>
+  {% endif %}
+</marquee>
 </div>
 <div class="container">
   <div class="row">
@@ -75,16 +80,13 @@
           <h4 class="card-title"><a href="/catalog/book/{{ obj.pk}}"> {{obj.title_of_the_book}}</a></h4>
           <p class="card-text">Стоимость:&nbsp;&nbsp;{{obj.price}}</p>
           </div>
+          <form  class=" p-4 float-end" action="/cart" method="get">
+            Количество:
+            <input type="number" name="quantity" min="1" value="1">
+            <input type="hidden" name="product" value="{{object.pk}}">
+            <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">В КОРЗИНУ</button>
+            </form>
         </div> 
-      </div>
-      {% endfor %}
-    </div>
-    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-      {% for obj in new_list %}
-      <div class="col d-flex align-items-stretch">
-        <div class="card-body">
-        <a href="#" class="btn btn-primary d-flex align-items-end">В корзину</a>
-        </div>
       </div>
       {% endfor %}
     </div>
@@ -109,16 +111,13 @@
           <h4 class="card-title"><a href="/catalog/book/{{ obj.pk}}"> {{obj.title_of_the_book}}</a></h4>
           <p class="card-text">Стоимость:&nbsp;&nbsp;{{obj.price}}</p>
           </div>
+          <form  class=" p-4 float-end" action="/cart" method="get">
+            Количество:
+            <input type="number" name="quantity" min="1" value="1">
+            <input type="hidden" name="product" value="{{object.pk}}">
+            <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">В КОРЗИНУ</button>
+            </form>
         </div> 
-      </div>
-      {% endfor %}
-    </div>
-    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-      {% for obj in rating_list %}
-      <div class="col d-flex align-items-stretch">
-        <div class="card-body">
-        <a href="#" class="btn btn-primary d-flex align-items-end">В корзину</a>
-        </div>
       </div>
       {% endfor %}
     </div>
@@ -144,18 +143,16 @@
           <h4 class="card-title"><a href="/catalog/book/{{ obj.pk}}"> {{obj.title_of_the_book}}</a></h4>
           <p class="card-text">Стоимость:&nbsp;&nbsp;{{obj.price}}</p>
           </div>
-        </div> 
-      </div>
-      {% endfor %}
-    </div>
-    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-      {% for obj in last_list %}
-      <div class="col d-flex align-items-stretch">
-        <div class="card-body">
-        <a href="#" class="btn btn-primary d-flex align-items-end">В корзину</a>
+          <form  class=" p-4 float-end" action="/cart" method="get">
+            Количество:
+            <input type="number" name="quantity" min="1" value="1">
+            <input type="hidden" name="product" value="{{object.pk}}">
+            <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">В КОРЗИНУ</button>
+            </form>
+          </div> 
         </div>
-      </div>
       {% endfor %}
+      </div>
     </div>
   </div>
 </div>

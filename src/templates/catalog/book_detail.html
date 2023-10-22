@@ -108,7 +108,12 @@
       <a class="btn btn-outline-danger my-2 my-sm-0 float-end" role="button"
         href="/catalog/book/delete/{{ object.pk}}/">Удалить</a>
         {% endif %}
-      <a class="btn btn-outline-success my-2 my-sm-0 float-end" role="button" href="#">ДОБАВИТЬ В КОРЗИНУ</a>
+        <form  class=" p-4 float-end" action="/cart" method="get">
+          <label for="input" class="col-form-label">Количество:</label>
+          <input class="form-control" id="input" type="number" name="quantity" min="1" value="1">
+          <input type="hidden" name="product" value="{{object.pk}}">
+          <button class="btn btn-outline-success my-2 my-sm-0 float-end" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
+          </form>
     </div>
   </div>
 </div>
