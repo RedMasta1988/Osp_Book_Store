@@ -3,7 +3,9 @@ from django.utils.translation import gettext_lazy as _
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils import timezone
 from guide.models import Writer, Serie, Genre, PublishingHouse
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 ACTIVE_CHOICES = (("Да", "ДА"), ("Нет", "НЕТ"))
 
 
@@ -60,7 +62,14 @@ class Book(models.Model):
 
     class Meta:
         ordering = ("-publish",)
-        verbose_name = "Книгу"
-        verbose_name_plural = "Книги"
+        verbose_name = "Книга"
+        verbose_name_plural = "Книгу"
 
-    
+class Comments(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.PROTECT, related_name = 'comments')
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    body = models.TextField(max_length=150)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user}: {self.body}"

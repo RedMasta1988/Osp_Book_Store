@@ -18,20 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from catalog import views
-from cart import views as cart_views
 from comment import views as com_views
 
 
 urlpatterns = [
-    path("catalog/", include("catalog.urls")),
+    path('', include("home.urls")),
+    path("admin/", admin.site.urls, name="admin"),
     path('account/', include('account.urls')),
-    path("guide/", include("guide.urls")),
-    path("search/", views.search, name='q'),
-    path('cart/', cart_views.view_cart),
-    path('comment/', com_views.CommentCreate.as_view()),
-    path('', views.view_home),
-    path("admin/", admin.site.urls),
+    path('orders/', include("orders.urls", namespace ="orders"), name = "orders"),
+    path("catalog/", include("catalog.urls", namespace ="catalog"), name = "catalog"),
+    path("guide/", include("guide.urls", namespace ="guide"), name = "guide"),
+    path('comment/', com_views.CommentCreate.as_view(), name="comment"),   
     
 ]+ static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

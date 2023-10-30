@@ -1,13 +1,13 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
-from catalog.views import BookDetail, BookList, BookCreate, BookUpdate, BookDelete
+from catalog import views
+
+app_name="catalog"
 
 urlpatterns = [
-    path("", BookList.as_view()), 
-    path("book/<int:pk>/", BookDetail.as_view()),
-    path("book/create/", BookCreate.as_view()),
-    path("book/update/<int:pk>/", BookUpdate.as_view()), 
-    path("book/delete/<int:pk>/", BookDelete.as_view()), 
-] + static(
-    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("", views.BookList.as_view(), name="book_list"), 
+    path("book/<int:pk>/", views.BookDetail.as_view(), name="book_detail"),
+    path("book/create/", views.BookCreate.as_view(), name="book_create"),
+    path("book/update/<int:pk>/", views.BookUpdate.as_view(), name="book_update"), 
+    path("book/delete/<int:pk>/", views.BookDelete.as_view(), name="book_delete"), 
+    path("book/<int:pk>/comment/", views.add_comment, name="add_comment"),
+]

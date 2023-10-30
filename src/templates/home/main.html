@@ -4,8 +4,13 @@
 {% load static %}
 {% block title %}Osp_Book_Store{% endblock %}
 {% block content %}
-
-<div class="container text-center ">
+<div class="container text-center">
+  <div class="row align-items-center">
+    <div class="col">
+    </div>
+  </div>
+</div>
+<div class="container text-center">
   <div class="row align-items-center">
     <div class="col-2">
       <img class="mb-4" src={% static "nerd_face_1024.gif" %} alt="" width="150" height="150">
@@ -77,13 +82,13 @@
         <div class="card">
         <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." height="350">
           <div class="card-body">
-          <h4 class="card-title"><a href="/catalog/book/{{ obj.pk}}"> {{obj.title_of_the_book}}</a></h4>
+          <h4 class="card-title"><a href="{% url 'catalog:book_detail' pk=obj.pk%}"> {{obj.title_of_the_book}}</a></h4>
           <p class="card-text">Стоимость:&nbsp;&nbsp;{{obj.price}}</p>
           </div>
-          <form  class=" p-4 float-end" action="/cart" method="get">
+          <form  class=" p-4 float-end" action="/orders/cart" method="get">
             Количество:
             <input type="number" name="quantity" min="1" value="1">
-            <input type="hidden" name="product" value="{{object.pk}}">
+            <input type="hidden" name="product" value="{{obj.pk}}">
             <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">В КОРЗИНУ</button>
             </form>
         </div> 
@@ -108,13 +113,13 @@
         <div class="card">
         <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." height="350">
           <div class="card-body">
-          <h4 class="card-title"><a href="/catalog/book/{{ obj.pk}}"> {{obj.title_of_the_book}}</a></h4>
+          <h4 class="card-title"><a href="{% url 'catalog:book_detail' pk=obj.pk%}"> {{obj.title_of_the_book}}</a></h4>
           <p class="card-text">Стоимость:&nbsp;&nbsp;{{obj.price}}</p>
           </div>
-          <form  class=" p-4 float-end" action="/cart" method="get">
+          <form  class=" p-4 float-end" action="/orders/cart" method="get">
             Количество:
             <input type="number" name="quantity" min="1" value="1">
-            <input type="hidden" name="product" value="{{object.pk}}">
+            <input type="hidden" name="product" value="{{obj.pk}}">
             <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">В КОРЗИНУ</button>
             </form>
         </div> 
@@ -140,13 +145,13 @@
         <div class="card">
         <img src="{{obj.cover_foto.url}}" class="card-img-top" alt="..." height="350">
           <div class="card-body">
-          <h4 class="card-title"><a href="/catalog/book/{{ obj.pk}}"> {{obj.title_of_the_book}}</a></h4>
+          <h4 class="card-title"><a href="{% url 'catalog:book_detail' pk=obj.pk%}"> {{obj.title_of_the_book}}</a></h4>
           <p class="card-text">Стоимость:&nbsp;&nbsp;{{obj.price}}</p>
           </div>
-          <form  class=" p-4 float-end" action="/cart" method="get">
+          <form  class=" p-4 float-end" action="/orders/cart" method="get">
             Количество:
             <input type="number" name="quantity" min="1" value="1">
-            <input type="hidden" name="product" value="{{object.pk}}">
+            <input type="hidden" name="product" value="{{obj.pk}}">
             <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">В КОРЗИНУ</button>
             </form>
           </div> 
@@ -161,7 +166,7 @@
   <div class=row gx-5>
     <div class=col> 
       <div class="p-3" ><h3>Уважаемый Покупатель, здесь Вы можете оставить отзыв на хорошую работу магазина или указать на недостатки и помочь нам стать лучше.</h3>
-        <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="/comment">Добавить отзыв</a>
+        <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="{% url 'comment' %}">Добавить отзыв</a>
       </div>
     </div>
   </div>

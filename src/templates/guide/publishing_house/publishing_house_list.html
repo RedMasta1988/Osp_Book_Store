@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {%block title %}Osp_Book_Store{% endblock %}
-
+{% load group_tags %}
 {% block content %}
+
 <div class="container text-center">
   <div class=row>
     <div class=col> 
@@ -22,8 +23,8 @@
         {% for obj in object_list %}
           <tr>
             <th scope="row">:)</th>
-            <td><a href="/guide/publishing_house/{{ obj.pk}}"> {{obj.name}}</a></td>
-            <td><a href="/guide/publishing_house/search/{{ obj.pk}}" class="btn btn-outline-success my-2 my-sm-0 float-end" >
+            <td><a href="{% url 'guide:publishing_house_detail' pk=obj.pk%}"> {{obj.name}}</a></td>
+            <td><a href="{% url 'guide:publishing_house_search' pk=obj.pk%}" class="btn btn-outline-success my-2 my-sm-0 float-end" >
               Все книги издательства
             </a></td>
             <!-- Кнопка-триггер модального окна -->
@@ -51,24 +52,24 @@
         {% endfor %}
         </tbody>
       </table>
-      {% if user.is_authenticated %}
-      <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="/guide/publishing_house/create">Добавить новое издательство</a>
+      {% if request.user|has_group:"MANAGERS" %} {% elif request.user|has_group:"ADMIN"%} 
+      <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="{% url 'guide:publishing_house_create'%}">Добавить новое издательство</a>
       {% endif %}
 </div>
 </div>
 <div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo В начало</a>
-            <a href="?page={{ page_obj.previous_page_number }}">назад</a>
-        {% endif %}
-        <span class="current">
-            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
-        </span>
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">след.</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">пред. &raquo</a>
-        {% endif %}
-    </span>
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo В начало</a>
+          <a href="?page={{ page_obj.previous_page_number }}">пред.</a>
+      {% endif %}
+      <span class="current">
+          Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+      </span>
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">след.</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">В конец. &raquo</a>
+      {% endif %}
+  </span>
 </div>
 {% endblock %}

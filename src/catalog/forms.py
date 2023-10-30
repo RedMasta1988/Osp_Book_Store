@@ -1,9 +1,13 @@
 from django import forms
-from .models import Book
+from . import models
 
 
 class BookModelForm(forms.ModelForm):
     
     class Meta:
-        model = Book
+        model = models.Book
         fields = ("__all__")
+class CommentModelForm(forms.ModelForm):
+    class Meta:
+        model = models.Comments
+        fields = ("body",)

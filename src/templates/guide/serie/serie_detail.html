@@ -24,9 +24,9 @@
   </div>
   <div class="row">
     <div class="col">
-      {% if user.is_authenticated %}
-      <a class="btn btn-outline-success my-2 my-sm-0 float-end" role="button" href="/guide/serie/update/{{ object.pk}}">Обновить</a>
-      <a class="btn btn-outline-danger my-2 my-sm-0 float-end" role="button" href="/guide/serie/delete/{{ object.pk}}">Удалить</a>
+      {% if request.user|has_group:"MANAGERS" %} {% elif request.user|has_group:"ADMIN"%} 
+      <a class="btn btn-outline-success my-2 my-sm-0 float-end" role="button" href="{% url 'guide:serie_update' pk=object.pk%}">Обновить</a>
+      <a class="btn btn-outline-danger my-2 my-sm-0 float-end" role="button" href="{% url 'guide:serie_delete' pk=object.pk%}">Удалить</a>
       {% endif %}
     </div> 
   </div>

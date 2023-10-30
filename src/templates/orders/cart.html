@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{%block title %}Osp_Book_Store{% endblock %}
+{% block content %}
+<div class="container text-center">
+    <div class="row">
+      <div class="col"></div>
+    </div>
+  </div>
+  <hr />
+<div class="container text-left" style="width: 100%;">
+   <div>
+       <H1>ВАША КОРЗИНА</H1>
+       <div class="scroll" style="height: 90rex; overflow-y: auto;">
+           <table class="table">
+               <thead>
+               <tr>
+                   <th scope="col">#</th>
+                   <th scope="col">КНИГА</th>
+                   <th scope="col">КОЛИЧЕСТВО</th>
+                   <th scope="col">ЦЕНА</th>
+               </tr>
+               </thead>
+               <tbody>
+               {% for product_in_cart in cart.products.all%}
+               <tr>
+                   <th scope="row">{{forloop.counter}}</th>
+                   <td>{{product_in_cart.product.title_of_the_book}}</td>
+                   <td>
+                       <div class="number">
+                       <button class="number-minus" type="button" onclick="deleteProduct({{product_in_cart.product.pk}})">-</button>
+                       <input type="number" style="max-width: 5rem" min="0" value="{{product_in_cart.quantity}}" readonly>
+                       <button class="number-plus" type="button" onclick="addProduct({{product_in_cart.product.pk}})">+</button>
+                       </div>
+                   </td>
+                   <td>{{product_in_cart.product.price}}</td>
+               </tr>
+               {% endfor %}
+               <tr>
+                   <td colspan="2">ОБЩЕЕ: </td>
+                   <td colspan="1">{{object.total_quantity}}</td>
+                   <td colspan="1">{{object.total_price}}</td>
+               </tr>
+               </tbody>
+           </table>
+           {% if object.products.all %}
+               <button type="button" class="btn btn-success"  {%if user.is_anonymous%}disabled{% endif %} onclick="document.location='{% url 'orders:create-order' %}'"> 
+               ЗАКАЗАТЬ</button> 
+               {%if user.is_anonymous%}<b>Пожалуйста, зарегистрируйтесь</b>{% endif %}
+           {% endif %}
+       </div>    
+   </div>
+</div> 
+<script>
+    function addProduct(pk) {
+        redirect("add", pk)
+    }
+    function deleteProduct(pk) {
+        redirect("delete", pk)
+    }
+    function redirect(action, pk) {
+        window.location.href = "{% url "orders:cart-items-edit" %}" + `?action=${action}&product=${pk}`;      
+    }
+</script>
+
+{% endblock %}

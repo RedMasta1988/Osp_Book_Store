@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+{%block title %}Osp_Book_Store{% endblock %}
+{% block content %}
+
+<div class="container text-center">
+    <div class="row">
+      <div class="col"></div>
+    </div>
+  </div>
+  <hr />
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Orders List</h1>
+        <p class="lead text-body-secondary">для просмотра detail</p>
+      </div>
+    </div>
+  </section>
+<br>
+
+<div class="container text-left" style="width: 30%;">
+  <div>
+    <H1>{{object}}</H1>
+    <hr>
+        <div class="container text-left" >
+          <b>Cart: </b>{{object.cart}}<br>
+          <hr>
+          <b>Goods in cart: </b>{%for good in object_cart%}
+          {% if good.cart == object.cart %}
+           {{good}} /
+          {%endif%}
+          {% endfor %}<br>
+          <b>Status: </b>{{object.status}} <br>
+          <i class="bi bi-lightbulb"></i> <a href="{% url 'orders:order-update' pk=object.pk %}">  Change status</a> ?<br>
+          <b>Delivery adress: </b>{{object.delivery_adress}}<br>
+          <b>created: </b>{{object.created}}<br>
+          <b>updated: </b>{{object.updated}}<br>
+        </div>
+                  
+  </div>
+</div> 
+
+{% endblock %}

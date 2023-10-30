@@ -6,7 +6,8 @@ from django.views.generic import (
     DeleteView,
 )
 from . import models, forms
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -27,24 +28,30 @@ class WriterList(ListView):
     model = models.Writer
 
 
-class WriterCreate(CreateView):
+class WriterCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     template_name = "guide/writer/writer_create.html"
     model = models.Writer
     form_class = forms.WriterModelForm
-    success_url = "/guide/writer/"
+    success_url = reverse_lazy("guide:writer_list")
+    login_url = "/account/login"
+    permission_required = "guide.add_writer"
 
 
-class WriterDelete(DeleteView):
+class WriterDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     template_name = "guide/writer/writer_delete.html"
     model = models.Writer
-    success_url = "/guide/writer/"
+    success_url = reverse_lazy("guide:writer_list")
+    login_url = "/account/login"
+    permission_required = "guide.delete_writer"
 
 
-class WriterUpdate(UpdateView):
+class WriterUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     template_name = "guide/writer/writer_update.html"
     model = models.Writer
     form_class = forms.WriterModelForm
-    success_url = "/guide/writer/"
+    success_url = reverse_lazy("guide:writer_list")
+    login_url = "/account/login"
+    permission_required = "guide.change_writer"
 
 
 class GenreDetail(DetailView):
@@ -63,24 +70,30 @@ class GenreList(ListView):
     model = models.Genre
 
 
-class GenreCreate(CreateView):
+class GenreCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     template_name = "guide/genre/genre_create.html"
     model = models.Genre
     form_class = forms.GenreModelForm
-    success_url = "/guide/genre/"
+    success_url = reverse_lazy("guide:genre_list")
+    login_url = "/account/login"
+    permission_required = "guide.add_genre"
 
 
-class GenreDelete(DeleteView):
+class GenreDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     template_name = "guide/genre/genre_delete.html"
     model = models.Genre
-    success_url = "/guide/genre/"
+    success_url = reverse_lazy("guide:genre_list")
+    login_url = "/account/login"
+    permission_required = "guide.delete_genre"
 
 
-class GenreUpdate(UpdateView):
+class GenreUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     template_name = "guide/genre/genre_update.html"
     model = models.Genre
     form_class = forms.GenreModelForm
-    success_url = "/guide/genre/"
+    success_url = reverse_lazy("guide:genre_list")
+    login_url = "/account/login"
+    permission_required = "guide.change_genre"
 
 
 class SerieDetail(DetailView):
@@ -99,24 +112,30 @@ class SerieList(ListView):
     model = models.Serie
 
 
-class SerieCreate(CreateView):
+class SerieCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     template_name = "guide/serie/serie_create.html"
     model = models.Serie
     form_class = forms.SerieModelForm
-    success_url = "/guide/serie/"
+    success_url = reverse_lazy("guide:serie_list")
+    login_url = "/account/login"
+    permission_required = "guide.add_genre"
 
 
-class SerieDelete(DeleteView):
+class SerieDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     template_name = "guide/serie/serie_delete.html"
     model = models.Serie
-    success_url = "/guide/serie/"
+    success_url = reverse_lazy("guide:genre_list")
+    login_url = "/account/login"
+    permission_required = "guide.delete_genre"
 
 
-class SerieUpdate(UpdateView):
+class SerieUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     template_name = "guide/serie/serie_update.html"
     model = models.Serie
     form_class = forms.SerieModelForm
-    success_url = "/guide/serie/"
+    success_url = reverse_lazy("guide:genre_list")
+    login_url = "/account/login"
+    permission_required = "guide.change_genre"
 
 
 class PublishingHouseDetail(DetailView):
@@ -135,21 +154,27 @@ class PublishingHouseList(ListView):
     model = models.PublishingHouse
 
 
-class PublishingHouseCreate(CreateView):
+class PublishingHouseCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     template_name = "guide/publishing_house/publishing_house_create.html"
     model = models.PublishingHouse
     form_class = forms.PublishingHouseModelForm
-    success_url = "/guide/publishing_house/"
+    success_url = reverse_lazy("guide:publishing_house_list")
+    login_url = "/account/login"
+    permission_required = "guide.add_genre"
 
 
-class PublishingHouseDelete(DeleteView):
+class PublishingHouseDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     template_name = "guide/publishing_house/publishing_house_delete.html"
     model = models.PublishingHouse
-    success_url = "/guide/publishing_house/"
+    success_url = reverse_lazy("guide:publishing_house_list")
+    login_url = "/account/login"
+    permission_required = "guide.delete_genre"
 
 
-class PublishingHouseUpdate(UpdateView):
+class PublishingHouseUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     template_name = "guide/publishing_house/publishing_house_update.html"
     model = models.PublishingHouse
     form_class = forms.PublishingHouseModelForm
-    success_url = "/guide/publishing_house/"
+    success_url = reverse_lazy("guide:publishing_house_list")
+    login_url = "/account/login"
+    permission_required = "guide.change_genre"

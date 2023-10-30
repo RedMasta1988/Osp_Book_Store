@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "catalog",
-    "cart",
     "guide",
+    "orders",
     "account",
     "comment",
+    "home",
 ]
 
 MIDDLEWARE = [
@@ -115,7 +116,7 @@ AUTH_USER_MODEL = 'account.User'
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "ru-RU"
+LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "Europe/Minsk"
 
@@ -145,3 +146,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+LOGIN_REDIRECT_URL = "/"
+LOGIN_URL = "/account/login"

@@ -7,3 +7,10 @@ class BookAdmin(admin.ModelAdmin):
     search_fields = ('title_of_the_book', 'writer', 'genre')
     ordering = ['title_of_the_book', 'publish', 'rating']
 admin.site.register(models.Book, BookAdmin)
+
+class CommentsAdmin(admin.ModelAdmin):
+    list_display = ('book', 'user', 'body', 'date')
+    list_filter = ('book', 'user', 'body', 'date')
+    search_fields = ('book',)
+    ordering = ['book', 'date']
+admin.site.register(models.Comments, CommentsAdmin)

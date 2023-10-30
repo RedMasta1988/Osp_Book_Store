@@ -2,6 +2,7 @@
 {% load static %}
 {%block title%}Osp_Book_Store{%endblock %}
 {% block content %}
+{% load group_tags %}
 <div class="container text-center">
   <div class="row">
     <div class="col"></div>
@@ -102,19 +103,43 @@
 <div class="container text-center">
   <div class="row">
     <div class="col">
-      {% if user.is_authenticated %}
+      {% if request.user|has_group:"MANAGERS" %} {% elif request.user|has_group:"ADMIN"%} 
       <a class="btn btn-outline-success my-2 my-sm-0 float-end" role="button"
-        href="/catalog/book/update/{{ object.pk}}/">Обновить</a>
+        href="{% url 'catalog:book_update' pk=object.pk%}">Обновить</a>
       <a class="btn btn-outline-danger my-2 my-sm-0 float-end" role="button"
-        href="/catalog/book/delete/{{ object.pk}}/">Удалить</a>
+        href="{% url 'catalog:book_delete' pk=object.pk%}">Удалить</a>
         {% endif %}
-        <form  class=" p-4 float-end" action="/cart" method="get">
-          <label for="input" class="col-form-label">Количество:</label>
-          <input class="form-control" id="input" type="number" name="quantity" min="1" value="1">
+        <form  class=" p-4 float-end" action="/orders/cart" method="get">
+          <label for="input" class="col-form-label float-start">Количество:&nbsp;&nbsp;</label>
+          <input style="max-width: 5rem" class="form-control" id="input" type="number" name="quantity" min="1" value="1">
           <input type="hidden" name="product" value="{{object.pk}}">
           <button class="btn btn-outline-success my-2 my-sm-0 float-end" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
-          </form>
+        </form>
     </div>
+  </div>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-3">
+        <h2>Комментарии:</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        {% if not object.comments.all %}
+    <p>Комментария нет... <a class="text-primary" href="{% url 'catalog:add_comment' pk=object.pk %}">Добавить...</a></p>
+        {% else %}
+    <a class="text-primary" href="{% url 'catalog:add_comment' pk=object.pk %}">ДОБАВИТЬ</a>
+    {% endif %}
+      </div>
+    </div>
+    <div class="row">
+      {% for comment in object.comments.all%}
+        <div class="col-3"></div>
+        <div class="col-3">
+          <b>{{ comment.user }}</b> - <span class="text-muted" style="font-size: 13px;">{{ comment.date }}</span>
+        </div>
+        <div class="col-6"><p>{{ comment.body }}</p></div>
+  {% endfor %}
   </div>
 </div>
 {% endblock %}
